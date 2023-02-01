@@ -1,0 +1,42 @@
+.signup-wrapper {
+  /* border: 0.5px solid grey; */
+  box-shadow: 0 0 8px lightgrey;
+  display: grid;
+  row-gap: 1rem;
+  text-transform: capitalize;
+  width: 30%;
+  margin: 2rem auto;
+  padding: 1rem;
+}
+
+.signup-wrapper > div {
+  /* border: 0.5px dashed red; */
+}
+
+.signup-heading {
+  font-size: 35px;
+  text-align: center;
+  background-color: rgba(246, 241, 241, 0.997);
+}
+.signup-body {
+}
+.signup-form-wrapper {
+  display: grid;
+  row-gap: 1rem;
+}
+.signup-rows {
+  display: grid;
+}
+.signup-rows input,
+.signup-rows select,
+.signup-rows button {
+  padding: 0.5rem;
+}
+
+.signup-rows button {
+  background-color: green;
+  color: white;
+  border: none;
+  text-transform: capitalize;
+  cursor: pointer;
+}
