@@ -1,0 +1,117 @@
+.profile-wrapper {
+  border: 0.5px solid grey;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 1rem;
+}
+.profile-wrapper .profile-col-1,
+.profile-wrapper .profile-col-2 {
+  border: 0.5px solid grey;
+}
+/* ---------------------------------- */
+.profile-wrapper .profile-col-1 {
+  min-width: 200px;
+  flex-grow: 1;
+  max-width: fit-content;
+  display: grid;
+  row-gap: 0.5rem;
+  padding: 2rem;
+  background-color: #3f3f3f;
+  color: white;
+  text-transform: capitalize;
+}
+/* .profile-col-1 {
+  display: grid;
+  row-gap: 0.5rem;
+  padding: 2rem;
+} */
+.profile-col-1 div[class*="sub"] {
+  /* border: 0.5px solid grey; */
+}
+.profile-col-1-sub-1 {
+  display: grid;
+  place-content: center;
+}
+.profile-col-1-sub-1 .profile-photo-round {
+  border-left: 5px solid grey;
+  border-bottom: 5px solid grey;
+  width: 100px;
+  height: 100px;
+  border-radius: 100%;
+  overflow: hidden;
+  display: grid;
+  place-content: center;
+}
+.profile-photo-round img {
+  width: 100%;
+}
+.profile-col-1-sub-2 {
+  text-align: center;
+  width: 20ch;
+  margin: 0 auto;
+  font-size: 18px;
+}
+.profile-col-1-sub-3 {
+  font-size: 12px;
+  text-align: center;
+}
+.profile-col-1-sub-4 {
+  display: flex;
+  column-gap: 2rem;
+  justify-content: center;
+}
+.profile-col-1-sub-4 a {
+  text-decoration: none;
+}
+.profile-col-1-sub-4 a:nth-child(1) {
+  color: lightgray;
+}
+.profile-col-1-sub-4 a:nth-child(2) {
+  color: indianred;
+}
+/* ---------------------------------- */
+.profile-wrapper .profile-col-2 {
+  flex-grow: 1;
+  min-width: 500px;
+}
+.profile-col-2-sub-1,
+.profile-col-2-sub-2 {
+  border: 0.5px solid grey;
+}
+
+.profile-col-2-sub-1 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background-color: #3f3f3f;
+  color: white;
+  text-transform: capitalize;
+}
+
+.profile-col-2-sub-1 .search-box .search-box-grp {
+  display: flex;
+  align-items: center;
+  border: 0.5px solid grey;
+  border-radius: 5px;
+  padding: 0.5rem;
+  column-gap: 1rem;
+}
+.searchIcon {
+  font-size: 24px;
+}
+.search-box-grp input {
+  border: none;
+  outline: none;
+  padding: 8px 12px;
+}
+.number-of-contact-box {
+  font-size: 2rem;
+}
+.profile-col-2 .add-contact-box a {
+  background-color: rgb(50, 50, 234);
+  color: white;
+  padding: 12px 16px;
+  text-decoration: none;
+  border-radius: 5px;
+}
