@@ -8,6 +8,7 @@ import Login from "./Components/Login/Login";
 import Profile from "./Components/Profile/Profile";
 import Settings from "./Components/Profile/Settings";
 import AddContact from "./Components/Contact/AddContact";
+import EditContact from './Components/Contact/EditContact';
 
 function App() {
   return (
@@ -22,8 +23,9 @@ function App() {
 
           <Route path="/profile" element={<Profile />} />
           <Route path="/profile/settings" element={<Settings />} />
-          
+
           <Route path="/add-contact" element={<AddContact />} />
+          <Route path="/contact/edit" element={<EditContact />} />
 
           <Route path="*" element={<NotFound />} />
         </Routes>

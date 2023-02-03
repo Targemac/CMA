@@ -1,24 +1,28 @@
 .profile-wrapper {
-  border: 0.5px solid grey;
+  /* border: 0.5px solid grey; */
   display: flex;
   flex-wrap: wrap;
   padding: 1rem;
+  
 }
 .profile-wrapper .profile-col-1,
 .profile-wrapper .profile-col-2 {
-  border: 0.5px solid grey;
+  /* border: 0.5px solid grey; */
 }
 /* ---------------------------------- */
 .profile-wrapper .profile-col-1 {
   min-width: 200px;
   flex-grow: 1;
   max-width: fit-content;
-  display: grid;
-  row-gap: 0.5rem;
+  display: flex;
+  flex-direction: column;
   padding: 2rem;
   background-color: #3f3f3f;
   color: white;
   text-transform: capitalize;
+  /* position: -webkit-sticky;
+  position: sticky;
+  top: 0px; */
 }
 /* .profile-col-1 {
   display: grid;
@@ -59,6 +63,7 @@
   display: flex;
   column-gap: 2rem;
   justify-content: center;
+  padding: 2rem 0;
 }
 .profile-col-1-sub-4 a {
   text-decoration: none;
@@ -76,7 +81,7 @@
 }
 .profile-col-2-sub-1,
 .profile-col-2-sub-2 {
-  border: 0.5px solid grey;
+  /* border: 0.5px solid grey; */
 }
 
 .profile-col-2-sub-1 {
@@ -92,7 +97,7 @@
 .profile-col-2-sub-1 .search-box .search-box-grp {
   display: flex;
   align-items: center;
-  border: 0.5px solid grey;
+  /* border: 0.5px solid grey; */
   border-radius: 5px;
   padding: 0.5rem;
   column-gap: 1rem;
@@ -114,4 +119,37 @@
   padding: 12px 16px;
   text-decoration: none;
   border-radius: 5px;
+}
+
+/* -------------------------- */
+.profile-col-2-sub-2 {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1rem;
+  padding: 1rem;
+}
+.profile-col-2-sub-2 .contact-box {
+  /* border: 0.5px dashed red; */
+  padding: 1rem;
+  box-shadow: 0 0 8px lightgray;
+}
+.profile-col-2-sub-2 .contact-box .contact-box-item:nth-child(1),
+.profile-col-2-sub-2 .contact-box .contact-box-item:nth-child(2) {
+  font-size: 24px;
+}
+
+.profile-col-2-sub-2 .contact-box .contact-box-action-grp {
+  display: flex;
+  gap: 2rem;
+}
+
+.profile-col-2-sub-2 .contact-box .contact-box-action-grp a {
+  text-decoration: none;
+  font-weight: bold;
+}
+.contact-box-action-grp .edit-btn a {
+  color: green;
+}
+.contact-box-action-grp .delete-btn a {
+  color: indianred;
 }
