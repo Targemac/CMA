@@ -1,44 +1,5 @@
-.page-wrapper {
-  /* border: 0.5px solid; */
-  padding: 2rem 4rem;
-}
-.page-section {
-  display: grid;
-  row-gap: 2rem;
-  text-transform: capitalize;
-}
+@import url(../../assets/css/page.css);
 
-.page-section .page-row-1,
-.page-section .page-row-3 {
-  background-color: #3f3f3f;
-  display: flex;
-  justify-content: space-between;
-  padding: 1rem;
-}
-.page-section a {
-  text-decoration: none;
-}
-.page-row-1 {
-  display: flex;
-  align-items: center;
-}
-.page-row-1-a {
-  font-size: 24px;
-  color: rgb(255, 255, 255);
-}
-.page-row-1-b a {
-  color: #2f2f2f;
-  background-color: lightgray;
-  padding: 8px 16px;
-  border-radius: 5px;
-}
-.page-row-1-b a:hover {
-  color: #ffffff;
-  background-color: rgb(65, 65, 245);
-}
-
-.page-row-2 {
-}
 .add-contact-wrapper {
   /* border: 0.5px dashed; */
   display: grid;
@@ -53,29 +14,4 @@
 .add-contact-wrapper .input-grp input,
 .add-contact-wrapper .input-grp select {
   padding: 8px 12px;
-}
-.page-row-3 {
-  align-items: center;
-}
-.page-row-3-a a {
-  color: #2f2f2f;
-  background-color: lightgray;
-  padding: 8px 16px;
-  border-radius: 5px;
-}
-.page-row-3-a a:hover {
-  color: #ffffff;
-  background-color: rgb(65, 65, 245);
-}
-.page-row-3-b input {
-  color: #ffffff;
-  background-color: rgb(65, 65, 245);
-  border: none;
-  padding: 8px 16px;
-  border-radius: 5px;
-  cursor: pointer;
-}
-.page-row-3-b input:hover {
-  color: #2f2f2f;
-  background-color: lightgray;
 }
