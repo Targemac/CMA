@@ -12,6 +12,7 @@ import EditContact from "./Components/Contact/EditContact";
 import EditProfile from "./Components/Profile/EditProfile";
 import ChangePassword from "./Components/Profile/ChangePassword";
 import DeleteProfile from "./Components/Profile/DeleteProfile";
+import AccountCreated from "./Components/Others/AccountCreated";
 
 function App() {
   return (
@@ -22,9 +23,11 @@ function App() {
           <Route index element={<Home />} />
           <Route path="/signup" element={<Signup />} />
 
+          <Route path="/account-created" element={<AccountCreated />} />
+
           <Route path="/login" element={<Login />} />
 
-          <Route path="/profile" element={<Profile />} />
+          <Route path="/profile/:id" element={<Profile />} />
           <Route path="/profile/settings" element={<Settings />} />
           <Route path="/profile/edit" element={<EditProfile />} />
           <Route path="/profile/change-password" element={<ChangePassword />} />

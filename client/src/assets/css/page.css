@@ -49,3 +49,17 @@
 .page-row-3 {
   align-items: center;
 }
+.page-row-3-a a,
+.page-row-3-b input {
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.page-row-3-a a {
+  background-color: lightgray;
+}
+.page-row-3-b input {
+  background-color: green;
+  color: white;
+  border: none;
+}
