@@ -1,8 +1,20 @@
-const express = require('express');
+const express = require("express");
 const app = express();
+const dotenv = require("dotenv").config();
 
-const port = 5000;
+const PORT = process.env.PORT;
 
-app.listen(port, () => {
-    console.log(`Server listening on port ${port}!`)
+// home page route
+app.get("/", (req, res) => {
+  res.send("welcome to home page");
+});
+
+// get all users
+app.get("/users", (req, res) => {
+  res.send("all users");
+});
+
+// creating server
+app.listen(PORT, () => {
+  console.log(`server listening on port ${PORT}!`);
 });

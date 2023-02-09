@@ -6,6 +6,7 @@ const fakeUsers = [
     firstName: "David",
     lastName: "Dayo",
     lastSeen: "2/2/2023 03-31-57pm",
+    photo:''
   },
   {
     id: 2,
@@ -14,6 +15,7 @@ const fakeUsers = [
     firstName: "john",
     lastName: "doe",
     lastSeen: "5/12/2022 03-31-57pm",
+    photo:''
   },
   {
     id: 3,
@@ -22,6 +24,7 @@ const fakeUsers = [
     firstName: "Anita",
     lastName: "Joe",
     lastSeen: "1/10/2023 05-31-57pm",
+    photo:''
   },
 ];
-export default fakeUsers;
+module.exports = fakeUsers;
