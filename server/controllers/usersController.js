@@ -4,6 +4,7 @@ const sendEmail = require("../services/sendEmail");
 const verifyTokenModel = require("../models/verifyTokenModel");
 const generateVerifyToken = require("../auth/generateVerifyToken");
 const verifyToken = require("../auth/verifyToken");
+const logInToken = require("../auth/logInToken");
 require("dotenv").config();
 
 //@description: register a user
@@ -80,7 +81,7 @@ const registerUser = async (req, res) => {
     });
 
     // structure http://localhost:3000/user/:userId/verify/:token
-    const verificationUrl = `<a href="http://localhost:3000/user/${newUser._id}/verify/${verificationToken}">verify your email</a>`;
+    const verificationUrl = `<a href="http://localhost:5000/api/users/${newUser._id}/verify/${verificationToken}">verify your email</a>`;
 
     //send email
     sendEmail(
@@ -125,22 +126,26 @@ const verifyUser = async (req, res) => {
 
     const verifiedToken = await verifyToken(token);
 
-    //if token and dont match
+    //if token id and userId dont match
     if (verifiedToken.userId.toString() !== foundUser._id.toString()) {
       res.status(400).send({ message: "Invalid token !!" });
       return;
     }
 
     // updateUserStatus
-    UserModel.findByIdAndUpdate({ _id: foundUser._id }, { verified: true });
+    await UserModel.findByIdAndUpdate(
+      foundUser._id,
+      { $set: { verified: true } },
+      { new: true }
+    );
 
     // removeToken
     await verifyTokenModel.findOneAndDelete({
       userId: foundUser._id,
     });
 
+    //send message to front-end
     res.status(200).send({ message: "User status updated to verified" });
-    // res.status(301).redirect("/login");
   } catch (error) {
     res.status(500).send({ message: error.message });
     return;
@@ -149,8 +154,53 @@ const verifyUser = async (req, res) => {
 
 //@description: login a user
 //@method POST localhost:5000/api/users/login
-const loginUser = (req, res) => {
-  res.json({ message: "User loggedin" });
+const loginUser = async (req, res) => {
+  //destructure info
+  const { email, password } = req.body;
+
+  //check if fields are empty
+  if (!email || !password) {
+    res.status(404).send({ message: "All fields are required" });
+    return;
+  }
+
+  try {
+    //check if user exists
+    const foundUser = await UserModel.findOne({ email: email.toLowerCase() });
+
+    //if user exists and passsword matches
+    if (foundUser && (await bcrypt.compare(password, foundUser.password))) {
+      //check if user is verified
+      if (!foundUser.verified === true) {
+        ///send email here
+      }
+
+      let token = await logInToken(foundUser._id);
+
+      req.user = foundUser;
+      req.session.loggedIn = true;
+
+      res.status(200).json({
+        message: "User loggedin",
+        user: {
+          id: foundUser._id,
+          isLoggedIn: true,
+          token: token,
+        },
+      });
+    } else {
+      res.status(401).send({ message: "Invalid credentials" });
+    }
+  } catch (error) {
+    res.status(500).send({ message: error.message });
+  }
 };
 
-module.exports = { registerUser, verifyUser, loginUser };
+//@description: user profile
+//@method GET localhost:5000/api/users/
+//@protected
+const userProfile = async (req, res) => {
+  res.status(200).send("user profile protected");
+};
+
+module.exports = { registerUser, verifyUser, loginUser, userProfile };
