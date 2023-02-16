@@ -4,8 +4,10 @@ require("dotenv").config();
 const cors = require("cors");
 const usersRouter = require("./routes/usersRoutes");
 const connectDB = require("./config/db");
+const offineConnect = require("./config/offlineConnection");
 
-connectDB();
+// connectDB();
+offineConnect();
 
 const PORT = process.env.PORT;
 
