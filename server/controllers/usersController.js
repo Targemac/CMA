@@ -11,20 +11,7 @@ require("dotenv").config();
 //@method POST localhost:5000/api/users/register
 const registerUser = async (req, res) => {
   //destructure data
-  const {
-    firstName,
-    lastName,
-    gender,
-    dateOfBirth,
-    country,
-    state,
-    city,
-    username,
-    email,
-    phone,
-    password,
-    photo,
-  } = req.body;
+  const { firstName, lastName, state, city, email, password } = req.body;
 
   try {
     //check if user email already exists
@@ -50,16 +37,10 @@ const registerUser = async (req, res) => {
     const newUser = await UserModel.create({
       firstName,
       lastName,
-      gender,
-      dateOfBirth,
-      country,
       state,
       city,
-      username,
       email,
-      phone,
       password: hashedPassword,
-      photo,
     });
 
     //if user could not be created
@@ -177,16 +158,20 @@ const loginUser = async (req, res) => {
 
       let token = await logInToken(foundUser._id);
 
-      req.user = foundUser;
-      req.session.loggedIn = true;
+      //store token in session
+      req.session.user = {
+        isLoggedIn: true,
+        token: token,
+      };
 
-      res.status(200).json({
-        message: "User loggedin",
-        user: {
-          id: foundUser._id,
-          isLoggedIn: true,
-          token: token,
-        },
+      req.session.save((err) => {
+        if (err) {
+          console.log(err.message);
+          res.status(500).send({ message: err.message });
+        } else {
+          //send token to fron-end
+          res.status(200).send(req.session.user);
+        }
       });
     } else {
       res.status(401).send({ message: "Invalid credentials" });
@@ -203,4 +188,22 @@ const userProfile = async (req, res) => {
   res.status(200).send("user profile protected");
 };
 
-module.exports = { registerUser, verifyUser, loginUser, userProfile };
+//@description: user logout
+//@method GET localhost:5000/api/users/logout
+//@protected
+const userLogout = async (req, res) => {
+  if (!req.headers["Authorization"]) {
+    res.status(401).send({ message: "No token provided" });
+    // return;
+  } else {
+    console.log("logout");
+  }
+};
+
+module.exports = {
+  registerUser,
+  verifyUser,
+  loginUser,
+  userProfile,
+  userLogout,
+};
